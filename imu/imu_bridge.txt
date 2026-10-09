@@ -1,0 +1,115 @@
+import socket
+
+import rclpy
+from rclpy.node import Node
+
+from sensor_msgs.msg import Imu
+from rclpy.qos import qos_profile_sensor_data
+
+
+class IMUBridge(Node):
+
+    def __init__(self):
+        super().__init__('imu_bridge')
+
+        self.publisher_ = self.create_publisher(
+            Imu,
+            '/imu/data',
+#prioritize latest data
+            qos_profile_sensor_data
+        )
+
+        self.sock = socket.socket(
+            socket.AF_INET,
+            socket.SOCK_DGRAM
+        )
+
+        self.sock.bind(
+            ('0.0.0.0', 6000)
+        )
+
+        self.sock.setblocking(False)
+
+        self.timer = self.create_timer(
+            0.01,
+            self.read_imu
+        )
+
+        self.get_logger().info(
+            "IMU UDP bridge running"
+        )
+
+
+
+
+    def read_imu(self):
+
+        try:
+            data, addr = self.sock.recvfrom(1024)
+        #print("UDP received:", data.decode())
+
+        except BlockingIOError:
+            return
+
+        message = data.decode()
+
+        if not message.startswith("IMU:"):
+            return
+
+        values = message.replace(
+            "IMU:",
+            ""
+        ).split(",")
+
+        values = [float(v) for v in values]
+
+
+        # unpack
+        ax, ay, az = values[0:3]
+        gx, gy, gz = values[3:6]
+
+        qx, qy, qz, qw = values[9:13]
+
+
+        imu = Imu()
+
+        imu.header.stamp = self.get_clock().now().to_msg()
+        imu.header.frame_id = "imu_link"
+
+
+        imu.linear_acceleration.x = ax
+        imu.linear_acceleration.y = ay
+        imu.linear_acceleration.z = az
+
+
+
+        imu.angular_velocity.x = gx
+        imu.angular_velocity.y = gy
+        imu.angular_velocity.z = gz
+
+
+        imu.orientation.x = qx
+        imu.orientation.y = qy
+        imu.orientation.z = qz
+        imu.orientation.w = qw
+
+
+        self.publisher_.publish(imu)
+        #print("publishing IMU")
+
+
+def main(args=None):
+
+    rclpy.init(args=args)
+
+    node = IMUBridge()
+
+    rclpy.spin(node)
+
+    node.destroy_node()
+
+    rclpy.shutdown()
+
+
+if __name__ == '__main__':
+    main()
