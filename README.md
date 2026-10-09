@@ -53,6 +53,7 @@ snakehead-communication-system/
 │   ├── LED_server.py
 │   └── led_control.py
 └── docs/
+    ├── ros_env1.yaml
     ├── usage
     └── notes while developing coms
 ```
@@ -65,6 +66,7 @@ The laptop's IP address may change when reconnecting to the network. Verify the 
 
 # Documentation
 
+ros_env1.yaml: anaconda env for laptop
 usage: Startup sequence, commands, and verification steps for each subsystem.
 notes while developing coms: Diagnostic commands, and notes while developing the system.
 
