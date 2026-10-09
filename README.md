@@ -53,8 +53,8 @@ snakehead-communication-system/
 │   ├── LED_server.py
 │   └── led_control.py
 └── docs/
-    ├── usage.md
-    └── troubleshooting_extranotes.md
+    ├── usage
+    └── notes while developing coms
 ```
 
 # Network Configuration
@@ -66,6 +66,6 @@ The laptop's IP address may change when reconnecting to the network. Verify the 
 # Documentation
 
 usage: Startup sequence, commands, and verification steps for each subsystem.
-troubleshooting_extranotes: Diagnostic commands, and notes while developing the system.
+notes while developing coms: Diagnostic commands, and notes while developing the system.
 
 Developed as a robotics communication and integration project. The repository documents the implementation and handoff of the LED control, media streaming, and IMU communication subsystems.
