@@ -53,9 +53,29 @@ snakehead-communication-system/
 │   ├── LED_server.py
 │   └── led_control.py
 └── docs/
-    ├── ros_env1.yaml
     ├── usage
-    └── notes while developing coms
+    ├── environment tranfer
+    └── environments/
+    │   ├── ros_env1.yaml
+    │   └── requirements.txt
+    └── notes while developing coms/
+        ├── IMU test notes
+        ├── audio notes
+        ├── camera notes
+        └── ros notes
+
+
+	PI: 
+IMUstream.py
+imu_bridge.py
+m_audio_stream.py
+m_camera_udp_commands.py
+led_server.py
+
+Laptop:
+media_receiver.py
+led_control.py
+
 ```
 
 # Network Configuration
