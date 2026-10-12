@@ -55,6 +55,7 @@ snakehead-communication-system/
 └── docs/
     ├── usage
     ├── environment tranfer
+    ├── Report and steps.pdf
     └── environments/
     │   ├── ros_env1.yaml
     │   └── requirements.txt
