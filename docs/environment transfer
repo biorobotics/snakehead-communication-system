@@ -1,2 +1,18 @@
 #for the laptop
 use an anaconda environment and the ros_env1.yaml file
+
+______________________
+#for the raspberry pi
+#python environment
+#copy both the python files and the requirements.txt in the doc folder
+
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+
+
+#docker transfer
+#copy the ros_test.tar file in the doc folder
+
+docker load -i /home/pi/ros_test.tar
+docker run -it --name ros_test_new ros_test_image bash
