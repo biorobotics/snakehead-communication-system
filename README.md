@@ -65,14 +65,14 @@ snakehead-communication-system/
         └── ros notes
 
 
-	PI: 
+#PI: 
 IMUstream.py
 imu_bridge.py
 m_audio_stream.py
 m_camera_udp_commands.py
 led_server.py
 
-Laptop:
+#Laptop:
 media_receiver.py
 led_control.py
 
