@@ -15,4 +15,4 @@ pip install -r requirements.txt
 #copy the ros_test.tar file in the doc folder
 
 docker load -i /home/pi/ros_test.tar
-docker run -it --name ros_test_new ros_test_image bash
+docker run -it -d --name ros_test --privileged -v /dev:/dev ros_test_image bash
