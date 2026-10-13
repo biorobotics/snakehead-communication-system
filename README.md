@@ -57,13 +57,9 @@ snakehead-communication-system/
     ├── environment tranfer
     ├── Report and steps.pdf
     └── environments/
-    │   ├── ros_env1.yaml
-    │   └── requirements.txt
-    └── notes while developing coms/
-        ├── IMU test notes
-        ├── audio notes
-        ├── camera notes
-        └── ros notes
+        ├── ros_env1.yaml
+        └── requirements.txt
+
 
 
 #PI: 
