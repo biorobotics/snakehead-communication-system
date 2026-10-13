@@ -4,7 +4,7 @@ in total you would have 5 terminals(or 6 if you check imu data) on the pi and 3 
 
 instructions are divided in IMU, MEDIA (video+audio) and LED
 
-for communicatoions check the ip is accurate for sender (pi) and receiver(laptop)
+for communications check the ip is accurate for sender (pi) and receiver(laptop)
 the commands are 
 #for the pi
 hostname -I 
@@ -12,7 +12,6 @@ hostname -I
 ipconfig
 
 ''' 
-work on the collection of files on both sides. th efiles for ros audio and the anaconda env file
 
 ___________________________________________________________
 
@@ -24,7 +23,7 @@ ___________________________________________________________
 # Activate the virtual environment:
 source .venv/bin/activate
 # Go to the Documents folder:
-cd Documents
+cd ~/Documents
 # Run the python code
 #check the ip is the pi one
 python3 IMUstream.py
@@ -33,10 +32,9 @@ python3 IMUstream.py
   hostname -I
 
 
-
 #TERMINAL 2:
 #to start the container:
-#chek if its there
+#chek if ros_test is there
 docker ps -a
 #start
 docker start ros_test
@@ -45,9 +43,7 @@ docker exec -it ros_test bash
 #activate setup
 source /opt/ros/humble/setup.bash
 #find the container
-cd root
-ls
-cd imu_test
+cd root/imu_test
 #run the bridge
 python3 imu_bridge.py
 	
@@ -90,18 +86,27 @@ ___________________________________________________________
 
 #activate the environment
 conda activate ros_env1
-#change directory
-cd  <path to file>
+#change directory to where you cloned the github repo
+cd  <path to directory>
 #execute the file
 python media_receiver.py
 
+#commands are:
+START
+STOP
+SET_BRIGHTNESS
+SET_FPS
+SET_QUALITY
+SET_EXPOSURE
 
-2.b MEDIA sender VIDEO + AUDIO (pi side)
+
+
+	2.b MEDIA sender VIDEO + AUDIO (pi side)
 
 #TERMINAL 1
 #to stream
 #change directory
-cd media
+cd ~/media
 #execute file
 #turn on speaker/mic
 python3 m_audio_stream.py
@@ -110,7 +115,7 @@ python3 m_audio_stream.py
 
 #TERMINAL 2
 #change directory
-cd media
+cd ~/media
 #execute file
 python3 m_camera_udp_commands.py
 
@@ -120,14 +125,18 @@ ___________________________________________________________
 	##################
 	#3.a LED (pi side)
 
-#source the enviroment>change directory>execute file
+#source the enviroment
 source .venv/bin/activate
-cd media
+#change directory
+cd ~/media
+#execute file
 sudo -E PATH=$PATH python3 LED_server.py
 
 
 	3.b LED (laptop side)
 
+#change directory to where you cloned the github repo
+cd  <path to directory>
 #run the script
 python led_control.py
 #commands are ON, OFF and Q to exit
