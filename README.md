@@ -84,7 +84,9 @@ The laptop's IP address may change when reconnecting to the network. Verify the 
 # Documentation
 
 usage: Startup sequence, commands, and verification steps for each subsystem.
+
 environment transfer: commands to transfer environmets to a new laptop or a new pi
+
 report and steps: Project hand off and further documentation
 
 Developed as a robotics communication and integration project. The repository documents the implementation and handoff of the LED control, media streaming, and IMU communication subsystems.
