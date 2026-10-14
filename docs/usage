@@ -52,7 +52,7 @@ python3 imu_bridge.py
   #cntrol O + cntrol x to override and exit
 
 	
-#TERMINAL 3: to check the stream (optional/ debugging) ##CURRENTLY NOT RUNNING 
+#TERMINAL 3: to check the stream (optional/ debugging)
 #execute terminal
 docker exec -it ros_test bash
 #activate setup
@@ -91,13 +91,13 @@ cd  <path to directory>
 #execute the file
 python media_receiver.py
 
-#commands are:
-START
-STOP
-SET_BRIGHTNESS
-SET_FPS
-SET_QUALITY
-SET_EXPOSURE
+	#commands are:
+	START
+	STOP
+	SET_BRIGHTNESS
+	SET_FPS
+	SET_QUALITY
+	SET_EXPOSURE
 
 
 
